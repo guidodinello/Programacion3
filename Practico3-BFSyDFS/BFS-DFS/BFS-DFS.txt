@@ -1,0 +1,38 @@
+Dado un grafo G=(V,E), |V|=n |E|=m
+
+BFS(nodo s de V)
+Inicializo el arreglo visitado[v]=f para todo nodo v de V
+visitado[s] = t
+Inicializo el arbol de recorrida en amplitud del grafo T_s = {s}
+i=0
+Inicializo conjunto de nodos en la capa i, L[i]={s}
+FOREACH (nodo u en L[i])
+	Inicializo conjunto de nodos L[i+1]={}
+	FOREACH (nodo v en V : existe la arista (u,v) en E)
+		IF ( !visitado[v] )
+			Agrego la arista (u,v) al arbol T_s
+			Agrego el nodo v al conjunto L[i+1]
+		 	visitado[v] = t
+		endif
+	i ++;
+	endfor
+endfor
+//Observar que se itera sobre L[i] que es un conjunto que puede ser implementado como 
+//cola o como pila indiferentemente
+
+
+DFS(nodo s de V)
+Inicializo el arreglo visitado[v]=f para todo nodo v de V
+visitado[s] = t
+Inicializo una pila S con el elemento s
+FOREACH (nodo u en S)
+	Retiro el elemento u de la pila
+	IF ( !visitado[u] )
+		visitado[u] = t
+		FOREACH (nodo v en V : existe la arista (u,v) en E)
+			Agrego v a la pila S
+		endfor
+	endif
+endfor
+
+
